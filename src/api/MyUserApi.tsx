@@ -8,7 +8,7 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 export const useGetMyUser = ()=> {
     const { getAccessTokenSilently } = useAuth0();
 
-    const getMyUserRequest = async (): Promise<User> => {
+    const getMyUserRequest = async ():Promise<User> => {
         const accessToken = await getAccessTokenSilently();
         const response = await fetch(`${API_BASE_URL}/api/my/user`, {
             method: "GET",
@@ -43,7 +43,7 @@ type CreateUserRequest = {
 export const useCreateMyUser = () => {
     const { getAccessTokenSilently } = useAuth0();
 
-    const createMyUserRequest = async (user: CreateUserRequest) => {
+    const createMyUserRequest = async (user: CreateUserRequest):Promise<User> => {
         const accessToken = await getAccessTokenSilently();
         const response = await fetch(`${API_BASE_URL}/api/my/user`, {
             method: "POST",
@@ -57,6 +57,8 @@ export const useCreateMyUser = () => {
         if(!response.ok){
             throw new Error("failed to create user");
         }
+
+        return response.json();
     };
 
     const mutation = useMutation({
