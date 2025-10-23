@@ -103,13 +103,14 @@ export const useUpdateMyUser = () => {
 
     const mutation = useMutation({
         mutationFn: updateMyUserRequest,
+        //onError: () => toast.error("Unable to update user"),
     });
 
     if(mutation.isSuccess) {
         toast.success("User profile updated")
     }
 
-        if(mutation.error) {
+    if(mutation.error) {
         toast.error(mutation.error.toString());
         mutation.reset();
     }
