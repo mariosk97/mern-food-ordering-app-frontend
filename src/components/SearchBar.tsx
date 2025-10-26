@@ -59,7 +59,7 @@ const SearchBar = ({ onSubmit, onReset, placeholder, searchQuery }: Props)=> {
                     render={({ field })=>(
                         <FormItem className="flex-1">
                             <FormControl>
-                                <Input {...field} className="border-none shadow-none text-xl focus-visible:ring-0"
+                                <Input {...field} className="border-none shadow-none text-sm md:text-base lg:text-lg placeholder:text-sm md:placeholder:text-base lg:placeholder:text-lg focus-visible:ring-0"
                                 placeholder={placeholder}
                             />
                             </FormControl>
